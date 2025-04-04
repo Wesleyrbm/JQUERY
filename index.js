@@ -29,3 +29,26 @@ $(document).ready(function() {
         function() { autoSlide = setInterval(() => $('#next').click(), 3000); }
     );
 });
+$(document).ready(function () {
+    let currentIndex = 0;
+    const images = $('.carousel img');
+  
+    function showImage(index) {
+      images.removeClass('active');
+      images.eq(index).addClass('active');
+    }
+  
+    $('#next').click(function () {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+  
+    $('#prev').click(function () {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+  
+    // Exibe a primeira imagem ao carregar a página
+    showImage(currentIndex);
+  });
+  
